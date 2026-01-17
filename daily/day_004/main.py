@@ -5,7 +5,7 @@ Docstring for daily.day_004.main
 """
 
 def main():
-    name = input("Enter your name")
+    name = input("Enter your name: ")
 
     daily_hours = []
 
