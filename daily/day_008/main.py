@@ -2,22 +2,24 @@
 Docstring for daily.day_008.main
 """
 
+from colorama import Fore
+
 def get_valid_float(prompt):
     while True:
         try:
             value = float(input(prompt))
             if value < 0:
-                raise ValueError("Value must be Non-Negative.")
+                raise ValueError(Fore.RED + "Value must be Non-Negative.")
             return value
         except ValueError as e:
-            print(f"Invalid input: {e}. Please try again")
+            print(Fore.RED + f"Invalid input: {e}. Please try again")
 
 
 def get_daily_hours():
     hours = []
     print("\nEnter coding hours for each day:")
     for day in range(1, 8):
-        hours.append(get_valid_float(f"Day {day}: "))
+        hours.append(get_valid_float(Fore.WHITE + f"Day {day}: "))
     return hours
 
 def calculate_metrics(daily_hours):
@@ -41,9 +43,9 @@ def save_profile_to_file(profile, filepath):
             f.write(f"{key}: {value}\n")
 
 def load_profile_from_file(filepath):
-    print("\n---- Loaded profile ----")
+    print(Fore.BLUE + "\n---- Loaded profile ----")
     with open(filepath, "r") as f:
-        print(f.read())
+        print(Fore.BLUE + f.read())
 
 def main():
     name = input("Enter your name: ").strip()
